@@ -1,0 +1,56 @@
+{
+    "name": "Tsunami",
+    "maps": [
+        {
+            "name": "Movement",
+            "id": "191faeca-a642-41e3-af9c-97c32332c609",
+            "actions": [
+                {
+                    "name": "Turn",
+                    "type": "Value",
+                    "id": "9ed1c02e-c297-41ee-97c8-9c3f7dc2b64e",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "1D Axis",
+                    "id": "4901806f-8765-4885-b2b3-acd53036a6fc",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Turn",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "4a14042e-2543-43b6-b6a6-0ab440d6f00d",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Turn",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "768e5f36-0887-46a6-acc0-b8e534e3e98f",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Turn",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
