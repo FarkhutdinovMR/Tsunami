@@ -35,15 +35,15 @@ Material:
     m_Floats:
     - _DepthDensity: 0.5
     - _DistanceDensity: 0.025
-    - _EdgeFoamDepth: 1
+    - _EdgeFoamDepth: 0.2
     - _FancyShadows: 0
-    - _FoamContribution: 0.549
+    - _FoamContribution: 1
     - _FoamNoiseScale: 0.32
     - _FoamScale: 10
     - _FoamSpeed: 0.1
     - _MaxSampleDistance: 49
     - _MaxShadowDistance: 50
-    - _ReflectionContribution: 0.519
+    - _ReflectionContribution: 1
     - _RefractionStrength: 0
     - _SparkleExponent: 20000
     - _SparkleScale: 75
@@ -64,7 +64,7 @@ Material:
     m_Colors:
     - _DeepColor: {r: 0.32156864, g: 0.6156863, b: 0.972549, a: 1}
     - _EdgeFoamColor: {r: 1, g: 1, b: 1, a: 1}
-    - _FarColor: {r: 0.32156864, g: 0.6156863, b: 0.972549, a: 1}
+    - _FarColor: {r: 0.20024922, g: 0.36551514, b: 0.5660378, a: 1}
     - _SSSColor: {r: 0.15222874, g: 0.2735849, b: 0.06323425, a: 1}
     - _ShadowColor: {r: 1, g: 1, b: 1, a: 1}
     - _ShallowColor: {r: 0.44313726, g: 0.9137255, b: 0.6627451, a: 1}

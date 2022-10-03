@@ -1,13 +1,14 @@
 using UnityEngine;
 
 [RequireComponent (typeof(SphereCollider))]
-public class Deformer : MonoBehaviour
+public class LandscapeDerformer : MonoBehaviour
 {
     [SerializeField] private float _depth = 0.5f;
     [SerializeField] private float _scale = 0.5f;
     [SerializeField] private Transform _raycastOrigin;
     [SerializeField] private float _raycastDistance = 10f;
     [SerializeField] private LayerMask _layer;
+    [SerializeField] private bool _recalculateNormals = false;
 
     private SphereCollider _collider;
     private GameObject _previousObject;
@@ -42,6 +43,10 @@ public class Deformer : MonoBehaviour
         }
 
         _mesh.vertices = vertisies;
+
+        if (_recalculateNormals)
+            _mesh.RecalculateNormals();
+
         _previousObject = source;
     }
 }

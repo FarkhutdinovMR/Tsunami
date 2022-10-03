@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5569677497776605960}
   - component: {fileID: 986830771212718194}
   - component: {fileID: 3085323661465961538}
+  - component: {fileID: -8726347821722377541}
   m_Layer: 0
   m_Name: BeachChair
   m_TagString: Untagged
@@ -94,7 +95,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6218209245328419549}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1.3080298, y: 1.1824528, z: 0.8974096}
@@ -115,3 +116,16 @@ MonoBehaviour:
   _fallSpeed: 10
   _destroyDelay: 1
   _reward: 2
+--- !u!114 &-8726347821722377541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6218209245328419549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f33e24a4e8fce6742a1d17ceabad6168, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _value: 0.5

@@ -15,15 +15,15 @@ public class Tsunami : MonoBehaviour
 
     public uint Level => _level;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.TryGetComponent(out Obstacle obstacle))
+        if (collision.gameObject.TryGetComponent(out Obstacle obstacle))
         {
-            uint reward = obstacle.Destroy2(_level);
+            uint reward = obstacle.Destroy(_level);
             if (reward > 0)
                 AddScore(reward);
             else
-                _movement.Rebound(other.transform);
+                _movement.Rebound(collision.transform);
         }
     }
 

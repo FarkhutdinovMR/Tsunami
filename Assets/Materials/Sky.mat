@@ -40,7 +40,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DownTex:
-        m_Texture: {fileID: 2800000, guid: 71ee35820fe32e94582522497860a236, type: 3}
+        m_Texture: {fileID: 2800000, guid: c04c612b5e9c34f4889c4a02ccff56e0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
@@ -76,7 +76,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _UpTex:
-        m_Texture: {fileID: 2800000, guid: 71ee35820fe32e94582522497860a236, type: 3}
+        m_Texture: {fileID: 2800000, guid: d20f7f717bca7e4469d43bcc4e620a47, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []

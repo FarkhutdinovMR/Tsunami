@@ -16,7 +16,7 @@ public class Obstacle : MonoBehaviour
         _collider = GetComponent<Collider>();
     }
 
-    public uint Destroy2(uint power)
+    public uint Destroy(uint power)
     {
         if (power < _strength)
             return 0;
