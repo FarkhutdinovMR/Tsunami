@@ -50,11 +50,11 @@ Material:
     - _SparkleSpeed: 0.025
     - _SunSpecularExponent: 1
     - _VertexNormalDelta: 0.01
-    - _Wave1Amplitude: 0.15
+    - _Wave1Amplitude: 0.2
     - _Wave1Direction: 0.5
     - _Wave1Speed: 0.25
     - _Wave1Wavelength: 10
-    - _Wave2Amplitude: 0.15
+    - _Wave2Amplitude: 0.2
     - _Wave2Direction: 0.25
     - _Wave2Speed: 1
     - _Wave2Wavelength: 10
