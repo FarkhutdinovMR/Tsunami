@@ -115,7 +115,7 @@ MonoBehaviour:
   _strength: 1
   _fallSpeed: 10
   _destroyDelay: 1
-  _reward: 2
+  _reward: 3
 --- !u!114 &-8726347821722377541
 MonoBehaviour:
   m_ObjectHideFlags: 0

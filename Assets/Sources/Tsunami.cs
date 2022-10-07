@@ -1,16 +1,23 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Tsunami : MonoBehaviour
 {
     [SerializeField] private Movement _movement;
     [SerializeField] private uint _levelup = 5;
+    [SerializeField] private UnityEvent<uint> _levelChanged;
 
     private uint _score;
     private uint _level = 1;
 
+    public event UnityAction<uint> LevelChanged
+    {
+        add => _levelChanged.AddListener(value);
+        remove => _levelChanged.RemoveListener(value);
+    }
+
     public event Action<uint> ScoreChanged;
-    public event Action<uint> LevelChanged;
     public event Action<uint> RewardGetted;
 
     public uint Level => _level;
@@ -36,7 +43,7 @@ public class Tsunami : MonoBehaviour
         {
             _level++;
             _levelup += _levelup;
-            LevelChanged?.Invoke(_level);
+            _levelChanged?.Invoke(_level);
         }
 
         ScoreChanged?.Invoke(_score);

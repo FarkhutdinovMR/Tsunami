@@ -47,8 +47,9 @@ public class Movement : MonoBehaviour
         while (_runningTime <= 1)
         {
             _runningTime += _reboundSpeed * Time.deltaTime;
-            var offset = direction * _backRebound.Evaluate(_runningTime) - Vector3.down *_downRebound.Evaluate(_runningTime);
+            var offset = direction * _backRebound.Evaluate(_runningTime);
             transform.position = _previousPosition + offset;
+            transform.localScale = Vector3.one - Vector3.down * _downRebound.Evaluate(_runningTime);
 
             yield return null;
         }
