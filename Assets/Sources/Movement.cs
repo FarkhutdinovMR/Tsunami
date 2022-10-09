@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    [SerializeField] private float _speed = 1;
-    [SerializeField] private float _angularSpeed = 1;
+    [SerializeField] private Ability _speed;
+    [SerializeField] private Ability _angularSpeed;
     [SerializeField] private AnimationCurve _downRebound;
     [SerializeField] private AnimationCurve _backRebound;
     [SerializeField] private float _reboundSpeed = 1;
@@ -21,7 +21,7 @@ public class Movement : MonoBehaviour
 
     public void Turn(float delta)
     {
-        transform.Rotate(Vector3.up * delta * _angularSpeed * Time.deltaTime);
+        transform.Rotate(Vector3.up * delta * _angularSpeed.Value * Time.deltaTime);
     }
 
     public void Rebound(Transform target)
@@ -32,7 +32,7 @@ public class Movement : MonoBehaviour
 
     private void Move()
     {
-        transform.position += transform.forward * _speed * Time.deltaTime;
+        transform.position += transform.forward * _speed.Value * Time.deltaTime;
     }
 
     private IEnumerator ReboundAnimation(Transform target)

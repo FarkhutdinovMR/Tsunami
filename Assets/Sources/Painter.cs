@@ -4,7 +4,6 @@ public class Painter : MonoBehaviour
 {
     [SerializeField] private LayerMask _layer;
     [SerializeField] private float _raycastDistance = 10f;
-    [SerializeField] private Transform _raycastOrigin;
     [SerializeField] private Texture2D[] _brushs;
     [SerializeField] private Color _aplhaColor;
     [SerializeField] private Tsunami _tsunami;
@@ -21,7 +20,9 @@ public class Painter : MonoBehaviour
 
     private void Update()
     {
-        if (Physics.SphereCast(_raycastOrigin.position, _collider.radius, Vector3.down, out RaycastHit hit, _raycastDistance, _layer))
+        Vector3 startPoint = transform.position + (_collider.radius + _collider.radius) * Vector3.up;
+
+        if (Physics.SphereCast(startPoint, _collider.radius, Vector3.down, out RaycastHit hit, _raycastDistance, _layer))
             Paint(hit.collider.gameObject);
     }
 

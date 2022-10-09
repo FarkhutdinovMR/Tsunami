@@ -21,6 +21,7 @@ public class Tsunami : MonoBehaviour
     public event Action<uint> RewardGetted;
 
     public uint Level => _level;
+    public uint Score => _score;
 
     private void OnTriggerEnter(Collider other)
     {
