@@ -24,6 +24,7 @@ public class Obstacle : MonoBehaviour
         StartCoroutine(Fall());
         Destroy(gameObject, _destroyDelay);
         _collider.enabled = false;
+
         return _reward;
     }
 

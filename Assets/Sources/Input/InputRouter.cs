@@ -20,5 +20,12 @@ public class InputRouter : MonoBehaviour
     private void Update()
     {
         _movement.Turn(_input.Movement.Turn.ReadValue<float>());
+
+        if (_input.Movement.Touch.phase == UnityEngine.InputSystem.InputActionPhase.Performed)
+        {
+            float position = _input.Movement.TurnTouch.ReadValue<float>();
+            float delta = position < Screen.width * 0.5f ? -1 : 1;
+            _movement.Turn(delta);
+        }
     }
 }

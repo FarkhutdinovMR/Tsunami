@@ -13,6 +13,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "TurnTouch",
+                    "type": "Value",
+                    "id": "46681c96-e77e-4072-9327-4b543f7bad54",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Touch",
+                    "type": "Button",
+                    "id": "600e6605-686c-4f12-9443-085e5eee65ac",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -51,12 +69,23 @@
                 },
                 {
                     "name": "",
-                    "id": "9b9506a3-cf5f-4c4d-8034-5fd5900c3006",
-                    "path": "<Touchscreen>/delta",
+                    "id": "bfe54848-94db-43d3-8eee-b52efca28747",
+                    "path": "<Touchscreen>/position/x",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Turn",
+                    "action": "TurnTouch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "512c7220-28b1-4420-b3a7-9ddb92444b73",
+                    "path": "<Touchscreen>/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Touch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

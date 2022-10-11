@@ -35,6 +35,24 @@ public partial class @TsunamiInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""TurnTouch"",
+                    ""type"": ""Value"",
+                    ""id"": ""46681c96-e77e-4072-9327-4b543f7bad54"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Touch"",
+                    ""type"": ""Button"",
+                    ""id"": ""600e6605-686c-4f12-9443-085e5eee65ac"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -73,12 +91,23 @@ public partial class @TsunamiInput : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""9b9506a3-cf5f-4c4d-8034-5fd5900c3006"",
-                    ""path"": ""<Touchscreen>/delta"",
+                    ""id"": ""bfe54848-94db-43d3-8eee-b52efca28747"",
+                    ""path"": ""<Touchscreen>/position/x"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Turn"",
+                    ""action"": ""TurnTouch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""512c7220-28b1-4420-b3a7-9ddb92444b73"",
+                    ""path"": ""<Touchscreen>/press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Touch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -90,6 +119,8 @@ public partial class @TsunamiInput : IInputActionCollection2, IDisposable
         // Movement
         m_Movement = asset.FindActionMap("Movement", throwIfNotFound: true);
         m_Movement_Turn = m_Movement.FindAction("Turn", throwIfNotFound: true);
+        m_Movement_TurnTouch = m_Movement.FindAction("TurnTouch", throwIfNotFound: true);
+        m_Movement_Touch = m_Movement.FindAction("Touch", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -150,11 +181,15 @@ public partial class @TsunamiInput : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Movement;
     private IMovementActions m_MovementActionsCallbackInterface;
     private readonly InputAction m_Movement_Turn;
+    private readonly InputAction m_Movement_TurnTouch;
+    private readonly InputAction m_Movement_Touch;
     public struct MovementActions
     {
         private @TsunamiInput m_Wrapper;
         public MovementActions(@TsunamiInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Turn => m_Wrapper.m_Movement_Turn;
+        public InputAction @TurnTouch => m_Wrapper.m_Movement_TurnTouch;
+        public InputAction @Touch => m_Wrapper.m_Movement_Touch;
         public InputActionMap Get() { return m_Wrapper.m_Movement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -167,6 +202,12 @@ public partial class @TsunamiInput : IInputActionCollection2, IDisposable
                 @Turn.started -= m_Wrapper.m_MovementActionsCallbackInterface.OnTurn;
                 @Turn.performed -= m_Wrapper.m_MovementActionsCallbackInterface.OnTurn;
                 @Turn.canceled -= m_Wrapper.m_MovementActionsCallbackInterface.OnTurn;
+                @TurnTouch.started -= m_Wrapper.m_MovementActionsCallbackInterface.OnTurnTouch;
+                @TurnTouch.performed -= m_Wrapper.m_MovementActionsCallbackInterface.OnTurnTouch;
+                @TurnTouch.canceled -= m_Wrapper.m_MovementActionsCallbackInterface.OnTurnTouch;
+                @Touch.started -= m_Wrapper.m_MovementActionsCallbackInterface.OnTouch;
+                @Touch.performed -= m_Wrapper.m_MovementActionsCallbackInterface.OnTouch;
+                @Touch.canceled -= m_Wrapper.m_MovementActionsCallbackInterface.OnTouch;
             }
             m_Wrapper.m_MovementActionsCallbackInterface = instance;
             if (instance != null)
@@ -174,6 +215,12 @@ public partial class @TsunamiInput : IInputActionCollection2, IDisposable
                 @Turn.started += instance.OnTurn;
                 @Turn.performed += instance.OnTurn;
                 @Turn.canceled += instance.OnTurn;
+                @TurnTouch.started += instance.OnTurnTouch;
+                @TurnTouch.performed += instance.OnTurnTouch;
+                @TurnTouch.canceled += instance.OnTurnTouch;
+                @Touch.started += instance.OnTouch;
+                @Touch.performed += instance.OnTouch;
+                @Touch.canceled += instance.OnTouch;
             }
         }
     }
@@ -181,5 +228,7 @@ public partial class @TsunamiInput : IInputActionCollection2, IDisposable
     public interface IMovementActions
     {
         void OnTurn(InputAction.CallbackContext context);
+        void OnTurnTouch(InputAction.CallbackContext context);
+        void OnTouch(InputAction.CallbackContext context);
     }
 }

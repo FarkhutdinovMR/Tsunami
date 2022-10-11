@@ -6,14 +6,13 @@ public class SaveLoad : MonoBehaviour
     [SerializeField] private Player _player;
     [SerializeField] private Tsunami _tsunami;
     [SerializeField] private TsunamiSkin _skin;
-    [SerializeField] private Ability _speed;
-    [SerializeField] private Ability _agility;
+    [SerializeField] private Stat _speed;
+    [SerializeField] private Stat _agility;
     [SerializeField] private Wallet _wallet;
 
     private const string Exp = "Exp";
     private const string PlayerLevel = "PlayerLevel";
     private const string Level = "Level";
-    private const string Score = "Score";
     private const string Speed = "Speed";
     private const string Agility = "Agility";
     private const string Money = "Money";
@@ -27,7 +26,6 @@ public class SaveLoad : MonoBehaviour
         PlayerPrefs.SetInt(Exp, (int)_player.Exp);
         PlayerPrefs.SetInt(PlayerLevel, (int)_player.Level);
         PlayerPrefs.SetInt(Level, SceneManager.GetActiveScene().buildIndex);
-        PlayerPrefs.SetInt(Score, PlayerPrefs.GetInt(Score) + (int)_tsunami.Score);
         PlayerPrefs.SetFloat(Speed, _speed.Value);
         PlayerPrefs.SetFloat(Agility, _agility.Value);
         PlayerPrefs.SetInt(Money, (int)_wallet.Gold);
@@ -49,7 +47,6 @@ public class SaveLoad : MonoBehaviour
         PlayerPrefs.SetInt(Exp, 0);
         PlayerPrefs.SetInt(PlayerLevel, 1);
         PlayerPrefs.SetInt(Level, DefaultLevel);
-        PlayerPrefs.SetInt(Score, 0);
         PlayerPrefs.SetFloat(Speed, _speed.DefaultValue);
         PlayerPrefs.SetFloat(Agility, _agility.DefaultValue);
         PlayerPrefs.SetInt(Money, 0);

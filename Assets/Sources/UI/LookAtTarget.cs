@@ -16,7 +16,7 @@ public class LookAtTarget : MonoBehaviour
         }
     }
 
-    public void SetTarget(Transform target)
+    public void Init(Transform target)
     {
         if (target == null)
             throw new ArgumentNullException(nameof(target));

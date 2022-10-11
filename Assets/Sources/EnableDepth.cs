@@ -7,11 +7,11 @@ public class EnableDepth : MonoBehaviour
     private void Awake()
     {
         Camera camera = GetComponent<Camera>();
-        camera.depthTextureMode = DepthTextureMode.Depth;
+        camera.depthTextureMode = DepthTextureMode.None;
 
 #if UNITY_EDITOR
         // Force depth render in the editor.
-        camera.forceIntoRenderTexture = true;
+        camera.forceIntoRenderTexture = false;
 #endif
     }
 }

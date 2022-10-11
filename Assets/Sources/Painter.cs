@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent (typeof(SphereCollider))]
 public class Painter : MonoBehaviour
 {
     [SerializeField] private LayerMask _layer;

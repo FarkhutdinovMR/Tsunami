@@ -1,16 +1,12 @@
-using System.Collections;
+using System;
 using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    [SerializeField] private Ability _speed;
-    [SerializeField] private Ability _angularSpeed;
-    [SerializeField] private AnimationCurve _downRebound;
-    [SerializeField] private AnimationCurve _backRebound;
-    [SerializeField] private float _reboundSpeed = 1;
+    [SerializeField] private Stat _moveSpeed;
+    [SerializeField] private Stat _agility;
+    [SerializeField] private Rebound _rebound;
 
-    private float _runningTime;
-    private Vector3 _previousPosition;
     private bool _canMove = true;
 
     private void Update()
@@ -21,39 +17,30 @@ public class Movement : MonoBehaviour
 
     public void Turn(float delta)
     {
-        transform.Rotate(Vector3.up * delta * _angularSpeed.Value * Time.deltaTime);
+        transform.Rotate(Vector3.up * delta * _agility.Value * Time.deltaTime);
     }
 
-    public void Rebound(Transform target)
+    public void Rebound(Transform obstacle)
     {
-        if (_canMove)
-            StartCoroutine(ReboundAnimation(target));
+        if (obstacle == null)
+            throw new ArgumentNullException(nameof(obstacle));
+
+        Stop();
+        _rebound.Play(obstacle, Resume);
+    }
+
+    private void Stop()
+    {
+        _canMove = false;
+    }
+
+    private void Resume()
+    {
+        _canMove = true;
     }
 
     private void Move()
     {
-        transform.position += transform.forward * _speed.Value * Time.deltaTime;
-    }
-
-    private IEnumerator ReboundAnimation(Transform target)
-    {
-        _canMove = false;
-        _runningTime = 0;
-        _previousPosition = transform.position;
-        Vector3 direction = target.position - transform.position;
-        direction.y = 0;
-        direction = direction.normalized;
-
-        while (_runningTime <= 1)
-        {
-            _runningTime += _reboundSpeed * Time.deltaTime;
-            var offset = direction * _backRebound.Evaluate(_runningTime);
-            transform.position = _previousPosition + offset;
-            transform.localScale = Vector3.one - Vector3.down * _downRebound.Evaluate(_runningTime);
-
-            yield return null;
-        }
-
-        _canMove = true;
+        transform.position += transform.forward * _moveSpeed.Value * Time.deltaTime;
     }
 }

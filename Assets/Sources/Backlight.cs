@@ -6,8 +6,9 @@ public class Backlight : MonoBehaviour
     [SerializeField] private float _value = 0.5f;
 
     private Material[] _materials;
-    private string _textureImpact = "_TextureImpact";
     private float _defaultValue;
+
+    private const string _textureImpact = "_TextureImpact";
 
     private void Start()
     {

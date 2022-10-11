@@ -75,12 +75,12 @@
     SubShader
     {
         LOD 100
-
-        Tags
-        {
-            "Queue" = "Transparent"
-            "RenderType" = "Transparent"
-        }
+        Tags { "RenderType" = "Opaque" }
+        //Tags
+        //{
+        //    "Queue" = "Transparent"
+        //    "RenderType" = "Transparent"
+        //}
 
         GrabPass
         {
@@ -377,7 +377,6 @@
 
                 // Apply fog.
                 UNITY_APPLY_FOG(i.fogCoord, color);
-
                 return float4(color, 1);
             }
             ENDCG

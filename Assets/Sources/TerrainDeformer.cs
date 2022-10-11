@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[RequireComponent(typeof(SphereCollider))]
+[RequireComponent (typeof(SphereCollider))]
 public class TerrainDeformer : MonoBehaviour
 {
     [SerializeField] private int _resolution = 10;
@@ -9,7 +9,6 @@ public class TerrainDeformer : MonoBehaviour
     [SerializeField] private LayerMask _layer;
     [SerializeField] private bool _recalculateNormals = false;
     [SerializeField] private float _raycastDistance = 10f;
-    [SerializeField] private Transform _raycastOrigin;
 
     private SphereCollider _collider;
     private GameObject _previousObject;
@@ -22,7 +21,9 @@ public class TerrainDeformer : MonoBehaviour
 
     private void Update()
     {
-        if (Physics.SphereCast(_raycastOrigin.position, _collider.radius, Vector3.down, out RaycastHit hit, _raycastDistance, _layer))
+        Vector3 startPoint = transform.position + (_collider.radius + _collider.radius) * Vector3.up;
+
+        if (Physics.SphereCast(startPoint, _collider.radius, Vector3.down, out RaycastHit hit, _raycastDistance, _layer))
             Deform(hit.collider.gameObject);
     }
 

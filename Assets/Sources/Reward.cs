@@ -1,26 +1,13 @@
 using UnityEngine;
-using UnityEngine.Animations;
 
 public class Reward : MonoBehaviour
 {
-    [SerializeField] private RewardPresenter _rewardTemplate;
-    [SerializeField] private Tsunami _tsunami;
-    [SerializeField] private Transform _lookAtTarget;
+    [SerializeField] private TextPresenter _rewardTemplate;
 
-    private void OnEnable()
+    public void Show(uint value, Transform lookAtTarget)
     {
-        _tsunami.RewardGetted += OnRewardGetted;
-    }
-
-    private void OnDisable()
-    {
-        _tsunami.RewardGetted -= OnRewardGetted;
-    }
-
-    private void OnRewardGetted(uint value)
-    {
-        RewardPresenter newReward = Instantiate(_rewardTemplate, _tsunami.transform.position, _tsunami.transform.rotation);
-        newReward.SetReward(value);
-        newReward.GetComponent<LookAtTarget>().SetTarget(_lookAtTarget);
+        TextPresenter newReward = Instantiate(_rewardTemplate, transform.position, transform.rotation);
+        newReward.UpdateText(value);
+        newReward.GetComponent<LookAtTarget>().Init(lookAtTarget);
     }
 }
