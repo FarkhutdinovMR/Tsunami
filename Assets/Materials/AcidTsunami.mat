@@ -90,20 +90,22 @@ Material:
     - _FlatnessExtra: 1
     - _FresnelExponent: 1.71
     - _GlossMapScale: 1
-    - _Glossiness: 0.5
+    - _Glossiness: 0
     - _GlossyReflections: 1
     - _GradientAngle: 0
     - _GradientCenterX: 0
     - _GradientCenterY: 0
     - _GradientEnabled: 0
     - _GradientSize: 10
-    - _Length: 10
+    - _Length: 4.77
     - _LightContribution: 0
     - _LightmapDirectionPitch: 0
     - _LightmapDirectionYaw: 0
     - _Metallic: 0
     - _Mode: 3
     - _OcclusionStrength: 1
+    - _OpacityHeight: 5
+    - _OpacityPosition: 0.1
     - _OverrideLightmapDir: 0
     - _Parallax: 0.02
     - _QueueOffset: 0
@@ -115,7 +117,7 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularEnabled: 0
     - _SpecularHighlights: 1
-    - _Speed: 300
+    - _Speed: 150
     - _SrcBlend: 1
     - _Surface: 0
     - _TextureBlendingMode: 0
@@ -138,7 +140,7 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FlatRimColor: {r: 0.20698163, g: 0.33117062, b: 0.42431232, a: 1}
     - _FlatSpecularColor: {r: 0.85023, g: 0.85034, b: 0.85045, a: 0.85056}
-    - _FresnelColor: {r: 0.43529415, g: 1, b: 0.37647063, a: 1}
+    - _FresnelColor: {r: 0.35643765, g: 0.9150943, b: 0.2978373, a: 0.8627451}
     - _LightmapDirection: {r: 0, g: 1, b: 0, a: 0}
     - _UnityShadowColor: {r: 0.85023, g: 0.85034, b: 0.85045, a: 0.85056}
   m_BuildTextureStacks: []

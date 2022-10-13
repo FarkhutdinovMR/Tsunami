@@ -28,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1712676717631412301}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.007817, y: 0, z: 15.354322}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -114,7 +114,7 @@ MonoBehaviour:
   _strength: 1
   _fallSpeed: 10
   _destroyDelay: 1
-  _reward: 1
+  _reward: 2
 --- !u!114 &844685900456293213
 MonoBehaviour:
   m_ObjectHideFlags: 0

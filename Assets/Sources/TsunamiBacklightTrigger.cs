@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent (typeof(SphereCollider))]
 public class TsunamiBacklightTrigger : MonoBehaviour
 {
-    [SerializeField] private Tsunami _tsunami;
+    [SerializeField] private Level _tsunamiLevel;
 
     private SphereCollider _collider;
     private float _radius;
@@ -12,17 +12,17 @@ public class TsunamiBacklightTrigger : MonoBehaviour
     {
         _collider = GetComponent<SphereCollider>();
         _radius = _collider.radius;
-        _tsunami.LevelChanged += OnLevelChanged;
+        _tsunamiLevel.LevelChanged += OnLevelChanged;
     }
 
     private void OnDisable()
     {
-        _tsunami.LevelChanged -= OnLevelChanged;
+        _tsunamiLevel.LevelChanged -= OnLevelChanged;
     }
 
     private void Update()
     {
-        transform.position = _tsunami.transform.position + _tsunami.transform.forward * _collider.radius;
+        transform.position = _tsunamiLevel.transform.position + _tsunamiLevel.transform.forward * _collider.radius;
     }
 
     private void OnLevelChanged(uint level)

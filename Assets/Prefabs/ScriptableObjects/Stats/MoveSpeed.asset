@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: MoveSpeed
   m_EditorClassIdentifier: 
   _name: Move speed
-  _value: 7
-  _upgradeCost: 20
+  _startCost: 20
   _defaultValue: 6
   _increase: 1
   _maxValue: 12

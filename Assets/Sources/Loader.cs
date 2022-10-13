@@ -1,12 +1,12 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Loader : MonoBehaviour
 {
     [SerializeField] private SaveLoad _saveLoad;
+    [SerializeField] private Stage _stage;
 
     private void Start()
     {
-        SceneManager.LoadScene(_saveLoad.GetLevel);
+        _stage.LoadStage(_saveLoad.GetStage);
     }
 }

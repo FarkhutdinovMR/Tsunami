@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5573102206269252347}
   - component: {fileID: 3717680521648095353}
   - component: {fileID: 8831208399658958558}
+  - component: {fileID: 7147073755744296941}
   m_Layer: 0
   m_Name: Crate02
   m_TagString: Untagged
@@ -27,14 +28,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5573102206271192123}
-  m_LocalRotation: {x: -0.5000001, y: -0.49999988, z: -0.4999999, w: 0.5000001}
+  m_LocalRotation: {x: -0.5, y: -0.5, z: -0.5, w: 0.5}
   m_LocalPosition: {x: 3.05, y: 0.28, z: 12.14}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: -90}
 --- !u!33 &5573102206268121147
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -115,3 +116,16 @@ MonoBehaviour:
   _fallSpeed: 10
   _destroyDelay: 1
   _reward: 2
+--- !u!114 &7147073755744296941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5573102206271192123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f33e24a4e8fce6742a1d17ceabad6168, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _value: 0.5

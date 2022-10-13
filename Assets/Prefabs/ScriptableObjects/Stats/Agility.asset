@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Agility
   m_EditorClassIdentifier: 
   _name: Agility
-  _value: 120
-  _upgradeCost: 20
+  _startCost: 25
   _defaultValue: 120
   _increase: 10
   _maxValue: 250

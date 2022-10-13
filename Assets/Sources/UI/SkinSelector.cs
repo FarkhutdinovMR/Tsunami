@@ -4,22 +4,24 @@ using UnityEngine.UI;
 
 public class SkinSelector : MonoBehaviour
 {
-    [SerializeField] private Player _player;
+    [SerializeField] private Level _playerLevel;
     [SerializeField] private TsunamiSkin _skin;
     [SerializeField] private Transform _skinContainer;
     [SerializeField] private SkinPresenter _skinTemplate;
     [SerializeField] private Image _skinIcon;
     [SerializeField] private TMP_Text _name;
+    [SerializeField] private TMP_Text _playerLevelText;
 
-    private void Start()
+    public void Show()
     {
         _skinIcon.sprite = _skin.CurrentSkin.Icon;
         _name.SetText(_skin.CurrentSkin.Name);
+        _playerLevelText.SetText(_playerLevel.Value.ToString());
 
         foreach (Skin skin in _skin.Skins)
         {
             SkinPresenter newSkin = Instantiate(_skinTemplate, _skinContainer);
-            newSkin.Init(skin, OnSkinButtonClicked, _player.Level < skin.UnlockLevel ? true : false);
+            newSkin.Init(skin, OnSkinButtonClicked, _playerLevel.Value < skin.UnlockLevel ? true : false);
         }
     }
 

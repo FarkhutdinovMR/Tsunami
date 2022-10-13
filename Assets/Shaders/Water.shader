@@ -1,4 +1,4 @@
-Shader "Custom/Water"
+Shader "Custom/WorldTransparetWater"
 {
     Properties
     {
@@ -11,6 +11,10 @@ Shader "Custom/Water"
         _Amplitude("Amplitude", Range(0,1)) = 0.5
         _FresnelColor("Fresnel Color", Color) = (1,1,1,1)
         [PowerSlider(4)] _FresnelExponent("Fresnel Exponent", Range(0.25, 4)) = 1
+        _OpacityHeight("Opacity height", Range(0,10)) = 1
+        _OpacityPosition("Opacity position", Range(-1,1)) = 0
+        _Head("Head", Range(0,5)) = 1
+        _HeadHeight("Head", Range(0,5)) = 2
     }
     SubShader
     {
@@ -19,10 +23,8 @@ Shader "Custom/Water"
         LOD 200
 
         CGPROGRAM
-        // Physically based Standard lighting model, and enable shadows on all light types
         #pragma surface surf Standard fullforwardshadows alpha:blend vertex:vert
 
-        // Use shader model 3.0 target, to get nicer looking lighting
         #pragma target 3.0
 
         sampler2D _MainTex;
@@ -44,43 +46,39 @@ Shader "Custom/Water"
         float _Amplitude;
         float3 _FresnelColor;
         float _FresnelExponent;
+        float _OpacityHeight;
+        float _OpacityPosition;
+        float _Head;
+        float _HeadHeight;
 
-        void vert(inout appdata_full v) {
+        void vert(inout appdata_full v)
+        {
             float phase = _Time * _Speed;
             float offset = v.vertex.x * _Length;
+
             offset = sin(phase + offset) * _Amplitude;
-            v.vertex.xz += offset;// *v.color.r;
-            v.vertex = v.vertex;
-            v.color = v.color;
+            v.vertex.xz += (_Head - v.vertex.y) * _HeadHeight * offset;
+
+            v.color.r = clamp((v.vertex.y - _OpacityPosition) * _OpacityHeight, 0, 1);
         }
 
-        // Add instancing support for this shader. You need to check 'Enable Instancing' on materials that use the shader.
-        // See https://docs.unity3d.com/Manual/GPUInstancing.html for more information about instancing.
-        // #pragma instancing_options assumeuniformscaling
         UNITY_INSTANCING_BUFFER_START(Props)
             // put more per-instance properties here
         UNITY_INSTANCING_BUFFER_END(Props)
 
         void surf (Input IN, inout SurfaceOutputStandard o)
         {
-            // Albedo comes from a texture tinted by color
             fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;
             o.Albedo = c.rgb;
-            // Metallic and smoothness come from slider variables
             o.Metallic = _Metallic;
             o.Smoothness = _Glossiness;
-            o.Alpha = IN.color.r * c.a;
+            o.Alpha = c.a * IN.color.r;
 
             // Fresnel effect
-            //get the dot product between the normal and the view direction
             float fresnel = dot(IN.worldNormal, IN.viewDir);
-            //invert the fresnel so the big values are on the outside
             fresnel = saturate(1 - fresnel);
-            //raise the fresnel value to the exponents power to be able to adjust it
             fresnel = pow(fresnel, _FresnelExponent);
-            //combine the fresnel value with a color
             float3 fresnelColor = fresnel * _FresnelColor;
-            //apply the fresnel value to the emission
             o.Emission = fresnelColor;
         }
         ENDCG

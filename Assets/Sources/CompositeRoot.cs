@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class CompositeRoot : MonoBehaviour
 {
@@ -11,13 +10,16 @@ public class CompositeRoot : MonoBehaviour
     [SerializeField] private float _timeToStopGame;
     [SerializeField] private Wallet _wallet;
     [SerializeField] private uint goldPerScore;
-    [SerializeField] private Player _player;
+    [SerializeField] private Level _tsunamiLevel;
+    [SerializeField] private Level _playerLevel;
     [SerializeField] private LevelTask _task;
     [SerializeField] private Size _size;
     [SerializeField] private Reward _reward;
     [SerializeField] private Camera _camera;
     [SerializeField] private TextPresenter _tsunamiLevelPresenter;
     [SerializeField] private TextPresenter _scorePresenter;
+    [SerializeField] private GameObject _tsunamiLevelCanvas;
+    [SerializeField] private Stage _stage;
 
     private void Start()
     {
@@ -26,34 +28,34 @@ public class CompositeRoot : MonoBehaviour
 
     private void OnEnable()
     {
-        _tsunami.LevelChanged += OnTsunamiLevelChanged;
-        _tsunami.RewardGetted += OnRewardGetted;
+        _tsunamiLevel.LevelChanged += OnTsunamiLevelChanged;
+        _tsunamiLevel.ExpChanged += OnExpChanged;
     }
 
     private void OnDisable()
     {
-        _tsunami.LevelChanged -= OnTsunamiLevelChanged;
-        _tsunami.RewardGetted -= OnRewardGetted;
+        _tsunamiLevel.LevelChanged -= OnTsunamiLevelChanged;
+        _tsunamiLevel.ExpChanged -= OnExpChanged;
     }
 
     public void LoadNextLevel()
     {
         _saveLoad.Save();
-        int currentIndex = SceneManager.GetActiveScene().buildIndex;
-        int nextIndex = SceneManager.sceneCountInBuildSettings - 1 > currentIndex ? currentIndex + 1 : currentIndex;
-        SceneManager.LoadScene(nextIndex);
+        _stage.LoadNext();
         Time.timeScale = 1;
     }
 
     private void CompleteGame()
     {
-        uint reward = _tsunami.Score / goldPerScore;
-        _wallet.Add(reward);
-        _player.AddExp(_tsunami.Score);
-        _saveLoad.Save();
-        _levelCompletedWindow.Show(reward, _player);
+        uint gold = _tsunamiLevel.Exp / goldPerScore;
+        _wallet.Add(gold);
+
+        _playerLevel.AddExp(_tsunamiLevel.Exp);
+        _levelCompletedWindow.Show(gold, _playerLevel);
         _gameMenu.SetActive(false);
+        _tsunamiLevelCanvas.SetActive(false);
         StartCoroutine(StopGame());
+        _saveLoad.Save();
     }
 
     private IEnumerator StopGame()
@@ -72,9 +74,9 @@ public class CompositeRoot : MonoBehaviour
             CompleteGame();
     }
 
-    private void OnRewardGetted(uint value)
+    private void OnExpChanged(uint value, uint value2)
     {
         _reward.Show(value, _camera.transform);
-        _scorePresenter.UpdateText(value);
+        _scorePresenter.UpdateText(value2);
     }
 }

@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class Movement : MonoBehaviour
+public class Movement : MonoBehaviour, IMovement
 {
     [SerializeField] private Stat _moveSpeed;
     [SerializeField] private Stat _agility;
@@ -18,6 +18,11 @@ public class Movement : MonoBehaviour
     public void Turn(float delta)
     {
         transform.Rotate(Vector3.up * delta * _agility.Value * Time.deltaTime);
+    }
+
+    public void Move()
+    {
+        transform.position += transform.forward * _moveSpeed.Value * Time.deltaTime;
     }
 
     public void Rebound(Transform obstacle)
@@ -37,10 +42,5 @@ public class Movement : MonoBehaviour
     private void Resume()
     {
         _canMove = true;
-    }
-
-    private void Move()
-    {
-        transform.position += transform.forward * _moveSpeed.Value * Time.deltaTime;
     }
 }

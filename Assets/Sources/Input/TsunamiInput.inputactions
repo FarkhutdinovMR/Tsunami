@@ -13,79 +13,28 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
-                },
-                {
-                    "name": "TurnTouch",
-                    "type": "Value",
-                    "id": "46681c96-e77e-4072-9327-4b543f7bad54",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "Touch",
-                    "type": "Button",
-                    "id": "600e6605-686c-4f12-9443-085e5eee65ac",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
                 {
-                    "name": "1D Axis",
-                    "id": "4901806f-8765-4885-b2b3-acd53036a6fc",
-                    "path": "1DAxis",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Turn",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "negative",
-                    "id": "4a14042e-2543-43b6-b6a6-0ab440d6f00d",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Turn",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "768e5f36-0887-46a6-acc0-b8e534e3e98f",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Turn",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
                     "name": "",
-                    "id": "bfe54848-94db-43d3-8eee-b52efca28747",
-                    "path": "<Touchscreen>/position/x",
+                    "id": "6d45882f-eb4d-4a66-b584-3b65fa262692",
+                    "path": "<Mouse>/delta/x",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "TurnTouch",
+                    "action": "Turn",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "512c7220-28b1-4420-b3a7-9ddb92444b73",
-                    "path": "<Touchscreen>/press",
+                    "id": "3e0b1c8b-191e-4b14-a386-5baba0b97670",
+                    "path": "<Touchscreen>/delta/x",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Touch",
+                    "action": "Turn",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
