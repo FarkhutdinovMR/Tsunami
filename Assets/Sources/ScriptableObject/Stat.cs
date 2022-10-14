@@ -7,7 +7,7 @@ public class Stat : ScriptableObject
     [SerializeField] private float _value;
     [SerializeField] private string _name;
     [SerializeField] private uint _startCost;
-    [SerializeField] private uint _defaultValue;
+    [SerializeField] private float _defaultValue;
     [SerializeField] private float _increase;
     [SerializeField] private float _maxValue;
     [SerializeField] private Sprite _icon;
@@ -17,7 +17,7 @@ public class Stat : ScriptableObject
     public string Name => _name;
     public float Value => _value;
     public uint UpgradeCost => _upgradeCost;
-    public uint DefaultValue => _defaultValue;
+    public float DefaultValue => _defaultValue;
     public float MaxValue => _maxValue;
     public uint StartCost => _startCost;
     public Sprite Icon => _icon;

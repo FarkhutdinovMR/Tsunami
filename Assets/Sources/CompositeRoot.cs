@@ -24,6 +24,8 @@ public class CompositeRoot : MonoBehaviour
     private void Start()
     {
         _saveLoad.Load();
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void OnEnable()
@@ -56,6 +58,8 @@ public class CompositeRoot : MonoBehaviour
         _tsunamiLevelCanvas.SetActive(false);
         StartCoroutine(StopGame());
         _saveLoad.Save();
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     private IEnumerator StopGame()

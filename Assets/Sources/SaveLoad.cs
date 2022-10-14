@@ -21,6 +21,7 @@ public class SaveLoad : MonoBehaviour
     private const string Money = "Money";
     private const string Skin = "Skin";
     private const int DefaultLevel = 1;
+    private const int DefaultStartLevelUp = 30;
 
     public int GetStage => PlayerPrefs.GetInt(Stage, DefaultLevel);
 
@@ -40,7 +41,7 @@ public class SaveLoad : MonoBehaviour
 
     public void Load()
     {
-        _playerLevel.Init((uint)PlayerPrefs.GetInt(Exp), (uint)PlayerPrefs.GetInt(PlayerLevel), (uint)PlayerPrefs.GetInt(PlayerLevelUp));
+        _playerLevel.Init((uint)PlayerPrefs.GetInt(Exp), (uint)PlayerPrefs.GetInt(PlayerLevel, DefaultLevel), (uint)PlayerPrefs.GetInt(PlayerLevelUp, (int)_playerLevel.StartLevelUp));
         _speed.Init(PlayerPrefs.GetFloat(Speed, _speed.DefaultValue), (uint)PlayerPrefs.GetInt(SpeedUpgradeCost));
         _agility.Init(PlayerPrefs.GetFloat(Agility, _agility.DefaultValue), (uint)PlayerPrefs.GetInt(AgilityUpgradeCost));
         _wallet.Init((uint)PlayerPrefs.GetInt(Money));
@@ -50,7 +51,7 @@ public class SaveLoad : MonoBehaviour
     [ContextMenu("Reset to default")]
     public void ResetDefault()
     {
-        PlayerPrefs.SetInt(PlayerLevelUp, (int)_playerLevel.StartLevelUp);
+        PlayerPrefs.SetInt(PlayerLevelUp, DefaultStartLevelUp);
         PlayerPrefs.SetInt(PlayerLevel, DefaultLevel);
         PlayerPrefs.SetInt(Exp, 0);
         PlayerPrefs.SetInt(Stage, DefaultLevel);
