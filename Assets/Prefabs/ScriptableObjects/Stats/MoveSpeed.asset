@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdf5fe32484c6204c8bd046e43fd25fd, type: 3}
   m_Name: MoveSpeed
   m_EditorClassIdentifier: 
-  _value: 6
+  _value: 9
   _name: Move speed
-  _startCost: 25
-  _defaultValue: 6
+  _startCost: 30
+  _defaultValue: 8.5
   _increase: 0.5
-  _maxValue: 9
+  _maxValue: 10
   _icon: {fileID: 21300000, guid: 8fd521d3fc1eb46fd92b0f29508e5f76, type: 3}

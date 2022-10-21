@@ -7,7 +7,7 @@ public class Ground : MonoBehaviour
 
     public Texture2D Texture => _texture;
 
-    private const float Resolution = 256;
+    private const float Resolution = 128;
     private const float Resolution2 = 10.24f;
 
     private void Start()

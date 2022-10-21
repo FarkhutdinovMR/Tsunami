@@ -33,7 +33,7 @@ public class Size : MonoBehaviour
         {
             _value += Time.deltaTime * _growSpeed;
             _model.localScale = Vector3.one * _value;
-            _collider.radius = _value * 0.5f;
+            _collider.radius = _value;
             yield return null;
         }
 

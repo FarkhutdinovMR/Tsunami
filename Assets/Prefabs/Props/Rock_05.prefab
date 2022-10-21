@@ -101,7 +101,7 @@ MonoBehaviour:
   _strength: 2
   _fallSpeed: 10
   _destroyDelay: 2
-  _reward: 4
+  _reward: 7
 --- !u!136 &1454956821
 CapsuleCollider:
   m_ObjectHideFlags: 0

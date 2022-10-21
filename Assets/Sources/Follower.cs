@@ -8,7 +8,7 @@ public class Follower : MonoBehaviour
 
     private void LateUpdate()
     {
-        transform.position = Vector3.Slerp(transform.position, _target.position, Time.deltaTime * (_speed.Value + _leadSpeed));
+        transform.position = Vector3.Lerp(transform.position, _target.position, Time.deltaTime * (_speed.Value + _leadSpeed));
         transform.rotation = Quaternion.Euler(0, _target.eulerAngles.y, 0);
     }
 }

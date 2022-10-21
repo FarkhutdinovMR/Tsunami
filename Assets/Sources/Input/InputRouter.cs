@@ -1,8 +1,10 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class InputRouter : MonoBehaviour
 {
     [SerializeField] private MonoBehaviour _movementBehaviour;
+    [SerializeField] private CompositeRoot _compositeRoot;
 
     private TsunamiInput _input;
 
@@ -21,15 +23,31 @@ public class InputRouter : MonoBehaviour
     {
         _input = new();
         _input.Enable();
+        _input.Menu.Enable();
+        _input.Movement.Disable();
+        _input.Menu.Start.performed += OnMenuStartPerformed;
     }
 
     private void OnDisable()
     {
-        _input.Disable();
+        Disable();
+        _input.Menu.Start.performed -= OnMenuStartPerformed;
     }
 
     private void Update()
     {
         _movement.Turn(_input.Movement.Turn.ReadValue<float>());
+    }
+
+    public void Disable()
+    {
+        _input.Disable();
+    }
+
+    private void OnMenuStartPerformed(InputAction.CallbackContext context)
+    {
+        _compositeRoot.Resume();
+        _input.Menu.Disable();
+        _input.Movement.Enable();
     }
 }

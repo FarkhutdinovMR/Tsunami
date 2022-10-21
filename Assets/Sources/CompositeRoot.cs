@@ -20,24 +20,29 @@ public class CompositeRoot : MonoBehaviour
     [SerializeField] private TextPresenter _scorePresenter;
     [SerializeField] private GameObject _tsunamiLevelCanvas;
     [SerializeField] private Stage _stage;
+    [SerializeField] private InputRouter _inputRouter;
+    [SerializeField] private float _smoothStopTime;
+    [SerializeField] private UIButton _startGameButton;
+    [SerializeField] private Movement _tsunamiMovement;
 
     private void Start()
     {
         _saveLoad.Load();
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        Pause();
     }
 
     private void OnEnable()
     {
         _tsunamiLevel.LevelChanged += OnTsunamiLevelChanged;
         _tsunamiLevel.ExpChanged += OnExpChanged;
+        _startGameButton.Clicked += OnStartGameButtonClicked;
     }
 
     private void OnDisable()
     {
         _tsunamiLevel.LevelChanged -= OnTsunamiLevelChanged;
         _tsunamiLevel.ExpChanged -= OnExpChanged;
+        _startGameButton.Clicked -= OnStartGameButtonClicked;
     }
 
     public void LoadNextLevel()
@@ -60,12 +65,18 @@ public class CompositeRoot : MonoBehaviour
         _saveLoad.Save();
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+        _inputRouter.Disable();
     }
 
     private IEnumerator StopGame()
     {
         yield return new WaitForSeconds(_timeToStopGame);
-        Time.timeScale = 0;
+
+        while (Time.timeScale > 0f)
+        {
+            Time.timeScale -= Time.deltaTime * _smoothStopTime;
+            yield return null;
+        }
     }
 
     private void OnTsunamiLevelChanged(uint level)
@@ -80,7 +91,26 @@ public class CompositeRoot : MonoBehaviour
 
     private void OnExpChanged(uint value, uint value2)
     {
-        _reward.Show(value, _camera.transform);
+        _reward.Show(value, _camera, _tsunamiLevel);
         _scorePresenter.UpdateText(value2);
+    }
+
+    private void OnStartGameButtonClicked()
+    {
+        Resume();
+    }
+
+    private void Pause()
+    {
+        _tsunamiMovement.enabled = false;
+        _startGameButton.gameObject.SetActive(true);
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    public void Resume()
+    {
+        _tsunamiMovement.enabled = true;
+        _startGameButton.gameObject.SetActive(false);
     }
 }

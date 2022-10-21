@@ -2,12 +2,11 @@ using UnityEngine;
 
 public class Reward : MonoBehaviour
 {
-    [SerializeField] private TextPresenter _rewardTemplate;
+    [SerializeField] private RewardPresenter _rewardPresenter;
 
-    public void Show(uint value, Transform lookAtTarget)
+    public void Show(uint text, Camera camera, Level level)
     {
-        TextPresenter newReward = Instantiate(_rewardTemplate, transform.position, transform.rotation);
-        newReward.UpdateText(value);
-        newReward.GetComponent<LookAtTarget>().Init(lookAtTarget);
+        RewardPresenter newReward = Instantiate(_rewardPresenter, transform.position, transform.rotation);
+        newReward.Init(text, camera, level);
     }
 }

@@ -97,13 +97,17 @@ Material:
     - _GradientCenterY: 0
     - _GradientEnabled: 0
     - _GradientSize: 10
-    - _Length: 4.77
+    - _Head: 1
+    - _HeadHeight: 2
+    - _Length: 3
     - _LightContribution: 0
     - _LightmapDirectionPitch: 0
     - _LightmapDirectionYaw: 0
     - _Metallic: 0
     - _Mode: 3
     - _OcclusionStrength: 1
+    - _OpacityHeight: 1
+    - _OpacityPosition: 0
     - _OverrideLightmapDir: 0
     - _Parallax: 0.02
     - _QueueOffset: 0

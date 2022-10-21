@@ -98,8 +98,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.3080298, y: 1.1824528, z: 0.8974096}
-  m_Center: {x: -0.005915136, y: 0.5912264, z: 0}
+  m_Size: {x: 1.0061767, y: 0.90957916, z: 0.690315}
+  m_Center: {x: -0.0045500845, y: 0.45478958, z: 0}
 --- !u!114 &3085323661465961538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,7 +115,7 @@ MonoBehaviour:
   _strength: 1
   _fallSpeed: 10
   _destroyDelay: 1
-  _reward: 3
+  _reward: 2
 --- !u!114 &-8726347821722377541
 MonoBehaviour:
   m_ObjectHideFlags: 0
