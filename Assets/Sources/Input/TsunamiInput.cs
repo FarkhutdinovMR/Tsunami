@@ -63,7 +63,7 @@ public partial class @TsunamiInput : IInputActionCollection2, IDisposable
                 {
                     ""name"": ""1D Axis"",
                     ""id"": ""6ea5ffa2-d4d0-44a1-bbd3-1584077c0837"",
-                    ""path"": ""1DAxis(minValue=-1200,maxValue=1200)"",
+                    ""path"": ""1DAxis(minValue=-1000,maxValue=1000)"",
                     ""interactions"": """",
                     ""processors"": ""DeltaTime"",
                     ""groups"": """",
@@ -96,7 +96,7 @@ public partial class @TsunamiInput : IInputActionCollection2, IDisposable
                 {
                     ""name"": ""1D Axis"",
                     ""id"": ""7034b28e-00a5-4b93-a4e2-185405919de4"",
-                    ""path"": ""1DAxis(minValue=-1200,maxValue=1200)"",
+                    ""path"": ""1DAxis(minValue=-1000,maxValue=1000)"",
                     ""interactions"": """",
                     ""processors"": ""DeltaTime"",
                     ""groups"": """",

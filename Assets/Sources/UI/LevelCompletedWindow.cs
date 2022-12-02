@@ -12,6 +12,7 @@ public class LevelCompletedWindow : MonoBehaviour
     [SerializeField] private TMP_Text _reward;
     [SerializeField] private Slider _slider;
     [SerializeField] private CompositeRoot _root;
+    [SerializeField] private YandexAd _yandexAd;
 
     private void OnEnable()
     {
@@ -44,6 +45,6 @@ public class LevelCompletedWindow : MonoBehaviour
 
     private void OnNextLevelButtonClicked()
     {
-        _root.LoadNextLevel();
+        _yandexAd.ShowInterstitialAd(_root.LoadNextLevel);
     }
 }

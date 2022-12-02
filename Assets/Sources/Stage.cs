@@ -9,7 +9,7 @@ public class Stage : MonoBehaviour
     private const int loaderStage = 1;
 
     public int Count => SceneManager.sceneCountInBuildSettings - loaderStage;
-    public int NextStage => Count > _value ? _value + 1 : _value;
+    public int NextStage => Count > _value ? _value + 1 : 1;
 
     private void Start()
     {

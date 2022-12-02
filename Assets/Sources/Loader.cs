@@ -9,7 +9,7 @@ public class Loader : MonoBehaviour
 
     private void Start()
     {
-        _saveLoad.ResetDefault();
+        //_saveLoad.ResetDefault();
         _version.SetText("Alpha " + Application.version);
         _stage.LoadStage(_saveLoad.GetStage);
     }

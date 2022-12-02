@@ -6,6 +6,7 @@ public class UpgradeWindow : MonoBehaviour
     [SerializeField] private LevelCompletedWindow _level;
     [SerializeField] private CompositeRoot _root;
     [SerializeField] private SkinSelector _skinSelector;
+    [SerializeField] private YandexAd _yandexAd;
 
     private void OnEnable()
     {
@@ -26,6 +27,6 @@ public class UpgradeWindow : MonoBehaviour
     private void OnOkButtonClicked()
     {
         gameObject.SetActive(false);
-        _root.LoadNextLevel();
+        _yandexAd.ShowInterstitialAd(_root.LoadNextLevel);
     }
 }

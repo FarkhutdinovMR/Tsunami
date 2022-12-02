@@ -42,7 +42,7 @@ public class SaveLoad : MonoBehaviour
     public void Load()
     {
         _playerLevel.Init((uint)PlayerPrefs.GetInt(Exp), (uint)PlayerPrefs.GetInt(PlayerLevel, DefaultLevel), (uint)PlayerPrefs.GetInt(PlayerLevelUp, (int)_playerLevel.StartLevelUp));
-        _speed.Init(PlayerPrefs.GetFloat(Speed, _speed.DefaultValue), (uint)PlayerPrefs.GetInt(SpeedUpgradeCost));
+        _speed.Init(PlayerPrefs.GetFloat(Speed, _speed.DefaultValue), (uint)PlayerPrefs.GetInt(SpeedUpgradeCost, (int)_speed.StartCost));
         _agility.Init(PlayerPrefs.GetFloat(Agility, _agility.DefaultValue), (uint)PlayerPrefs.GetInt(AgilityUpgradeCost));
         _wallet.Init((uint)PlayerPrefs.GetInt(Money));
         _skin.Init((uint)PlayerPrefs.GetInt(Skin));

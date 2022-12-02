@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using System;
 using UnityEngine.UI;
+using Lean.Localization;
 
 public class StatUpgradePresenter : MonoBehaviour
 {
@@ -33,7 +34,8 @@ public class StatUpgradePresenter : MonoBehaviour
 
     public void UpdateData()
     {
-        _name.SetText(_ability.Name);
+        string statName = LeanLocalization.GetTranslationText(_ability.Name, _ability.Name);
+        _name.SetText(statName);
         _currentValue.SetText(_ability.Value.ToString() + "/" + _ability.MaxValue.ToString());
         _cost.SetText(_ability.UpgradeCost.ToString());
         _icon.sprite = _ability.Icon;

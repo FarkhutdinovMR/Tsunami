@@ -1,3 +1,4 @@
+using Lean.Localization;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,7 +16,8 @@ public class SkinSelector : MonoBehaviour
     public void Show()
     {
         _skinIcon.sprite = _skin.CurrentSkin.Icon;
-        _name.SetText(_skin.CurrentSkin.Name);
+        string skinName = LeanLocalization.GetTranslationText(_skin.CurrentSkin.Name, _skin.CurrentSkin.Name);
+        _name.SetText(skinName);
         _playerLevelText.SetText(_playerLevel.Value.ToString());
 
         foreach (Skin skin in _skin.Skins)
@@ -29,6 +31,7 @@ public class SkinSelector : MonoBehaviour
     {
         _skinIcon.sprite = skin.Icon;
         _skin.ChangeSkin(skin);
-        _name.SetText(skin.Name);
+        string skinName = LeanLocalization.GetTranslationText(skin.Name, skin.Name);
+        _name.SetText(skinName);
     }
 }
