@@ -36,13 +36,10 @@ public class Movement : MonoBehaviour, IMovement
             transform.position += transform.forward * _moveSpeed.Value * Time.deltaTime;
     }
 
-    public void Rebound(Transform obstacle)
+    public void Rebound(Vector3 position)
     {
-        if (obstacle == null)
-            throw new ArgumentNullException(nameof(obstacle));
-
         Stop();
-        _rebound.Play(obstacle, Resume);
+        _rebound.Play(position, Resume);
     }
 
     private void Stop()

@@ -18,8 +18,13 @@ Shader "Custom/WorldTransparetWater"
     }
     SubShader
     {
-        Tags { "Queue" = "Transparent" "IgnoreProjector" = "True" "RenderType" = "Transparent" }
-        Blend SrcAlpha OneMinusSrcAlpha
+        Tags
+        {
+            "Queue" = "Transparent"
+            //"IgnoreProjector" = "True"
+            "RenderType" = "Transparent"
+        }
+
         LOD 200
 
         CGPROGRAM

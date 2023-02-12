@@ -1,5 +1,7 @@
+using Cinemachine;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CompositeRoot : MonoBehaviour
 {
@@ -13,17 +15,17 @@ public class CompositeRoot : MonoBehaviour
     [SerializeField] private Level _tsunamiLevel;
     [SerializeField] private Level _playerLevel;
     [SerializeField] private LevelTask _task;
-    [SerializeField] private Size _size;
+    [SerializeField] private TsunamiSize _size;
     [SerializeField] private Reward _reward;
     [SerializeField] private Camera _camera;
     [SerializeField] private TextPresenter _tsunamiLevelPresenter;
     [SerializeField] private TextPresenter _scorePresenter;
     [SerializeField] private GameObject _tsunamiLevelCanvas;
     [SerializeField] private Stage _stage;
-    [SerializeField] private InputRouter _inputRouter;
     [SerializeField] private float _smoothStopTime;
-    [SerializeField] private UIButton _startGameButton;
-    [SerializeField] private Movement _tsunamiMovement;
+    [SerializeField] private GameObject _startGameButton;
+    [SerializeField] private TsunamiMovement _tsunamiMovement;
+    [SerializeField] private CinemachineInputProvider _cinemachineInputProvider;
 
     private void Start()
     {
@@ -35,14 +37,18 @@ public class CompositeRoot : MonoBehaviour
     {
         _tsunamiLevel.LevelChanged += OnTsunamiLevelChanged;
         _tsunamiLevel.ExpChanged += OnExpChanged;
-        _startGameButton.Clicked += OnStartGameButtonClicked;
     }
 
     private void OnDisable()
     {
         _tsunamiLevel.LevelChanged -= OnTsunamiLevelChanged;
         _tsunamiLevel.ExpChanged -= OnExpChanged;
-        _startGameButton.Clicked -= OnStartGameButtonClicked;
+    }
+
+    private void Update()
+    {
+        if (Mouse.current.leftButton.isPressed && _startGameButton.activeSelf)
+            Resume();
     }
 
     public void LoadNextLevel()
@@ -65,7 +71,7 @@ public class CompositeRoot : MonoBehaviour
         _saveLoad.Save();
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-        _inputRouter.Disable();
+        _cinemachineInputProvider.enabled = false;
     }
 
     private IEnumerator StopGame()
@@ -95,15 +101,11 @@ public class CompositeRoot : MonoBehaviour
         _scorePresenter.UpdateText(value2);
     }
 
-    private void OnStartGameButtonClicked()
-    {
-        Resume();
-    }
-
     private void Pause()
     {
         _tsunamiMovement.enabled = false;
-        _startGameButton.gameObject.SetActive(true);
+        _startGameButton.SetActive(true);
+        _cinemachineInputProvider.enabled = false;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -111,6 +113,7 @@ public class CompositeRoot : MonoBehaviour
     public void Resume()
     {
         _tsunamiMovement.enabled = true;
-        _startGameButton.gameObject.SetActive(false);
+        _startGameButton.SetActive(false);
+        _cinemachineInputProvider.enabled = true;
     }
 }

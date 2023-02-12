@@ -1,59 +1,70 @@
 using UnityEngine;
 
-[RequireComponent (typeof(SphereCollider))]
+[RequireComponent(typeof(CharacterController))]
 public class TerrainDeformer : MonoBehaviour
 {
-    [SerializeField] private int _resolution = 10;
-    [SerializeField] private float _depth = 1;
     [SerializeField] private float _scale = 1;
     [SerializeField] private LayerMask _layer;
     [SerializeField] private bool _recalculateNormals = false;
     [SerializeField] private float _raycastDistance = 10f;
 
-    private SphereCollider _collider;
+    private CharacterController _characterController;
     private GameObject _previousObject;
     private Mesh _mesh;
+    private int _vertexPerWidth = 41;
+    private int _vertexPerUnit = 2;
+    private Vector3[] _vertisies;
+    private Vector3 _sourcePosition;
 
     private void Start()
     {
-        _collider = GetComponent<SphereCollider>();
+        _characterController = GetComponent<CharacterController>();
     }
 
     private void Update()
     {
-        Vector3 startPoint = transform.position + (_collider.radius + _collider.radius) * Vector3.up;
+        Vector3 startPoint = transform.position + (_characterController.radius + _characterController.radius) * Vector3.up;
 
-        if (Physics.SphereCast(startPoint, _collider.radius, Vector3.down, out RaycastHit hit, _raycastDistance, _layer))
+        if (Physics.SphereCast(startPoint, _characterController.radius, Vector3.down, out RaycastHit hit, _raycastDistance, _layer))
             Deform(hit.collider.gameObject);
     }
 
     private void Deform(GameObject source)
     {
         if (_mesh == null || _previousObject != source)
-            _mesh = source.GetComponent<MeshFilter>().mesh;
-
-        Vector3[] vertisies = _mesh.vertices;
-
-        int x = (int)(_collider.transform.position.x - source.transform.position.x);
-        int z = (int)(_collider.transform.position.z - source.transform.position.z);
-
-        int size = (int)(_collider.radius + _scale);
-
-        for (int zz = -size + 1; zz < size; zz++)
         {
-            for (int xx = -size + 1; xx < size; xx++)
+            _mesh = source.GetComponent<MeshFilter>().mesh;
+            _vertisies = _mesh.vertices;
+            _vertexPerWidth = (int)Mathf.Sqrt(_mesh.vertexCount);
+            _vertexPerUnit = (int)(_vertexPerWidth / _mesh.bounds.size.x);
+            _sourcePosition = source.transform.position;
+        }
+
+        int xCenter = (int)(transform.position.x - source.transform.position.x);
+        int zCenter = (int)(transform.position.z - source.transform.position.z);
+        int indexCenter = CalculateIndex(xCenter, zCenter);
+        Vector3 position = transform.position + _characterController.center;
+
+        int size = (int)(_characterController.radius * _vertexPerUnit + _scale);
+        for (int z = -size; z < size; z++)
+        {
+            for (int x = -size; x < size; x++)
             {
-                int index = CalculateIndex(x + xx, z + zz);
-                
-                if (index < 0 || index >= vertisies.Length)
+                int index = indexCenter + x + 1 + _vertexPerWidth * (z + 1);
+
+                if (index < 0 || index >= _vertisies.Length)
                     continue;
 
-                if (vertisies[index].y > -_depth)
-                    vertisies[index] += Vector3.down * _depth;
+                float distance = Vector3.Distance(position, _sourcePosition + _vertisies[index]);
+                float height = (_characterController.radius) - distance;
+                if (height <= 0f)
+                    continue;
+
+                _vertisies[index] += height * Vector3.down;
             }
         }
 
-        _mesh.vertices = vertisies;
+        _mesh.vertices = _vertisies;
 
         if (_recalculateNormals)
             _mesh.RecalculateNormals();
@@ -63,6 +74,6 @@ public class TerrainDeformer : MonoBehaviour
 
     public int CalculateIndex(int x, int z)
     {
-        return x + z + z * _resolution;
+        return x * _vertexPerUnit + z * _vertexPerUnit * _vertexPerWidth;
     }
 }

@@ -97,6 +97,8 @@ Material:
     - _GradientCenterY: 0
     - _GradientEnabled: 0
     - _GradientSize: 10
+    - _Head: 1
+    - _HeadHeight: 2
     - _Length: 4.77
     - _LightContribution: 0
     - _LightmapDirectionPitch: 0
@@ -130,7 +132,7 @@ Material:
     - _Wave1Direction: 0
     - _ZWrite: 0
     m_Colors:
-    - _Color: {r: 0.9137255, g: 0.29803917, b: 0.29803917, a: 0.9019608}
+    - _Color: {r: 0.6792453, g: 0.23389105, b: 0.23389105, a: 0.9019608}
     - _ColorDim: {r: 0.43596473, g: 0.70193803, b: 0.9150943, a: 1}
     - _ColorDimCurve: {r: 0.85023, g: 0.85034, b: 0.85045, a: 0.85056}
     - _ColorDimExtra: {r: 0.43596473, g: 0.70193803, b: 0.9150943, a: 1}
@@ -140,7 +142,7 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FlatRimColor: {r: 0.20698163, g: 0.33117062, b: 0.42431232, a: 1}
     - _FlatSpecularColor: {r: 0.85023, g: 0.85034, b: 0.85045, a: 0.85056}
-    - _FresnelColor: {r: 0.9137255, g: 0.29803917, b: 0.29803917, a: 0.9019608}
+    - _FresnelColor: {r: 0.6698113, g: 0.22432362, b: 0.22432362, a: 0.9019608}
     - _LightmapDirection: {r: 0, g: 1, b: 0, a: 0}
     - _UnityShadowColor: {r: 0.85023, g: 0.85034, b: 0.85045, a: 0.85056}
   m_BuildTextureStacks: []

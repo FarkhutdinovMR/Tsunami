@@ -13,23 +13,20 @@ public class Rebound : MonoBehaviour
     private Coroutine _coroutine;
     private Action _action;
 
-    public void Play(Transform obstacle, Action action)
+    public void Play(Vector3 position, Action action)
     {
-        if (obstacle == null)
-            throw new ArgumentNullException(nameof(obstacle));
-
         if (_coroutine != null)
             return;
 
         _action = action;
-        _coroutine = StartCoroutine(PlayAnimation(obstacle));
+        _coroutine = StartCoroutine(PlayAnimation(position));
     }
 
-    private IEnumerator PlayAnimation(Transform obstacle)
+    private IEnumerator PlayAnimation(Vector3 position)
     {
         _runningTime = 0;
         _previousPosition = transform.position;
-        Vector3 direction = obstacle.position - transform.position;
+        Vector3 direction = position - transform.position;
         direction.y = 0;
         direction = direction.normalized;
 

@@ -134,8 +134,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _strength: 2
-  _fallSpeed: 10
-  _destroyDelay: 2
+  _fallSpeed: 2
+  _rotateSpeed: 1
+  _destroyDelay: 3
   _reward: 3
 --- !u!114 &2435479647107053012
 MonoBehaviour:

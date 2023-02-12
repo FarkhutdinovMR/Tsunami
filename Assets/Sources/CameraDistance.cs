@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent (typeof(CinemachineVirtualCamera))]
 public class CameraDistance : MonoBehaviour
 {
-    [SerializeField] private SphereCollider _collider;
+    [SerializeField] private CharacterController _collider;
     [SerializeField] private AnimationCurve _distance;
     [SerializeField] private AnimationCurve _shoulderOffset;
 

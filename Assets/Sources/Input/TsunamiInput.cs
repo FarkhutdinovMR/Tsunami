@@ -31,7 +31,7 @@ public partial class @TsunamiInput : IInputActionCollection2, IDisposable
                     ""name"": ""Turn"",
                     ""type"": ""Value"",
                     ""id"": ""9ed1c02e-c297-41ee-97c8-9c3f7dc2b64e"",
-                    ""expectedControlType"": """",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -41,7 +41,7 @@ public partial class @TsunamiInput : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""6d45882f-eb4d-4a66-b584-3b65fa262692"",
-                    ""path"": ""<Mouse>/delta/x"",
+                    ""path"": ""<Mouse>/delta"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -52,7 +52,7 @@ public partial class @TsunamiInput : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""3e0b1c8b-191e-4b14-a386-5baba0b97670"",
-                    ""path"": ""<Touchscreen>/delta/x"",
+                    ""path"": ""<Touchscreen>/delta"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -61,9 +61,9 @@ public partial class @TsunamiInput : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""1D Axis"",
+                    ""name"": ""2D Vector"",
                     ""id"": ""6ea5ffa2-d4d0-44a1-bbd3-1584077c0837"",
-                    ""path"": ""1DAxis(minValue=-1000,maxValue=1000)"",
+                    ""path"": ""2DVector(minValue=-1000,maxValue=1000)"",
                     ""interactions"": """",
                     ""processors"": ""DeltaTime"",
                     ""groups"": """",
@@ -72,8 +72,30 @@ public partial class @TsunamiInput : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""negative"",
+                    ""name"": ""Up"",
                     ""id"": ""0351546e-c3e1-4fca-9844-34b22974cbae"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Turn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Down"",
+                    ""id"": ""a55516f8-4d2d-4949-aa22-d573c220f8d1"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Turn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Left"",
+                    ""id"": ""dd959ead-f6fe-46d7-843f-56a1d38e79b5"",
                     ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -83,8 +105,8 @@ public partial class @TsunamiInput : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""positive"",
-                    ""id"": ""a55516f8-4d2d-4949-aa22-d573c220f8d1"",
+                    ""name"": ""Right"",
+                    ""id"": ""a2d2ab88-e279-4cac-80a0-fea7b054cfd6"",
                     ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -94,9 +116,9 @@ public partial class @TsunamiInput : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""1D Axis"",
+                    ""name"": ""2D Vector"",
                     ""id"": ""7034b28e-00a5-4b93-a4e2-185405919de4"",
-                    ""path"": ""1DAxis(minValue=-1000,maxValue=1000)"",
+                    ""path"": ""2DVector(minValue=-1000,maxValue=1000)"",
                     ""interactions"": """",
                     ""processors"": ""DeltaTime"",
                     ""groups"": """",
@@ -105,8 +127,30 @@ public partial class @TsunamiInput : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""negative"",
+                    ""name"": ""Up"",
                     ""id"": ""ed9a8882-a369-41a9-93fd-f42358025b43"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Turn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Down"",
+                    ""id"": ""1caac782-858c-4664-adf9-d977182d0438"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Turn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Left"",
+                    ""id"": ""31169edd-081d-41e4-9355-013cdfa5340f"",
                     ""path"": ""<Keyboard>/leftArrow"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -116,8 +160,8 @@ public partial class @TsunamiInput : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""positive"",
-                    ""id"": ""1caac782-858c-4664-adf9-d977182d0438"",
+                    ""name"": ""Right"",
+                    ""id"": ""64fa04d0-5f69-4eb4-8600-478e7b28a728"",
                     ""path"": ""<Keyboard>/rightArrow"",
                     ""interactions"": """",
                     ""processors"": """",
